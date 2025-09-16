@@ -1,0 +1,226 @@
+Building AI Agents with MCP
+This repository contains all the demo code, examples, and hands-on materials for FLO25
+
+🎯 Course Overview
+The Model Context Protocol (MCP) is revolutionizing how AI applications connect to external tools and data sources. This course provides comprehensive, hands-on experience with MCP through practical demos and real-world examples.
+
+What You'll Learn
+MCP Fundamentals: Core concepts, architecture, and capabilities
+MCP Capabilities: Tools, Resources, Prompts, and Sampling
+Agent Development: Building agents with Google ADK, and OpenAI SDK
+Consumer Applications: Using MCP with Claude Desktop and Cursor IDE
+Security Best Practices: Securing MCP implementations and preventing attacks
+🚀 Quick Start with UV
+Using UV Package Manager (Recommended)
+Most demo scripts in this course include UV inline metadata and can be run directly with UV, a fast Python package manager:
+
+# Install UV (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Run any demo script directly - UV handles dependencies automatically
+uv run notebooks/01-introduction-to-mcp/mcp_server.py
+uv run notebooks/03-tools-resources-prompts-sampling/comprehensive_mcp_server.py
+
+# Or navigate to a demo directory and run
+cd notebooks/02-first-mcp-server
+uv run obsidian_vault_server.py
+Benefits of using UV:
+
+No need to manage virtual environments manually
+Dependencies are installed automatically from inline script metadata
+Faster dependency resolution and installation
+Consistent environment across all demos
+📁 Repository Structure
+mcp-course/
+├── README.md                           # This file - complete course guide
+├── Makefile                           # Automation scripts
+├── presentation/                      # Course presentation materials
+│   ├── presentation.html              # Main presentation
+│   ├── mcp-talk.pdf                  # PDF version
+│   └── anki-mcp.txt                  # Study materials
+└── notebooks/                        # All demo materials organized by topic
+    ├── 01-introduction-to-mcp/       # MCP basics and first server
+    ├── 02-first-mcp-server/          # Building your first MCP server
+    ├── 03-tools-resources-prompts-sampling/  # Core MCP capabilities
+    ├── 04-google-adk-agents/         # Google Agent Development Kit demos
+    ├── 05-openai-agents/             # OpenAI Agents SDK with MCP
+    ├── 06-claude-desktop-cursor-demos/  # Consumer app integration
+    ├── 07-security-tips/             # Security best practices
+    └── assets-resources/             # Images and supporting materials
+🔧 Alternative Setup (Traditional Approach)
+Prerequisites
+Python 3.10+ (Required for all demos)
+Node.js 18+ (Required for some MCP servers)
+Git (For repository operations)
+API Keys Needed
+Depending on which demos you want to run:
+
+OpenAI API Key (for OpenAI demos)
+Anthropic API Key (for Claude-based demos)
+Google Cloud Project (for ADK demos)
+1. Clone and Setup
+# Clone the repository
+git clone https://github.com/EnkrateiaLucca/mcp-course.git
+cd mcp-course
+
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install base dependencies
+pip install -r requirements.txt
+2. Set Environment Variables
+Create a .env file in the root directory:
+
+# API Keys (add the ones you have)
+OPENAI_API_KEY=your-openai-api-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
+GOOGLE_CLOUD_PROJECT=your-google-cloud-project-id
+
+# Optional: Custom paths
+MCP_DEMO_PATH=/path/to/your/demo/files
+3. Quick Test
+Test your setup with a basic MCP server:
+
+cd notebooks/01-introduction-to-mcp
+pip install -r requirements.txt
+python mcp_server.py
+🪟 Windows Setup Guide
+Windows users need additional setup steps for MCP development. Follow this comprehensive guide for a smooth setup experience.
+
+Prerequisites for Windows
+Windows 10/11 with Developer Mode enabled
+Python 3.10+ from python.org (ensure "Add to PATH" is checked)
+Node.js 18+ from nodejs.org
+Git for Windows from git-scm.com
+Windows Terminal (recommended) from Microsoft Store
+1. Enable Developer Mode
+Open Settings → Update & Security → For developers
+Select Developer mode
+Restart your computer
+2. Setup PowerShell Execution Policy
+Open PowerShell as Administrator and run:
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+3. Clone and Setup (Windows)
+# Clone the repository
+git clone <repository-url>
+cd mcp-course
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment (Command Prompt)
+venv\Scripts\activate
+
+# OR activate in PowerShell
+venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r requirements.txt
+4. Environment Variables (Windows)
+Create a .env file in the project root:
+
+# API Keys
+OPENAI_API_KEY=your-openai-api-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
+GOOGLE_CLOUD_PROJECT=your-google-cloud-project-id
+
+# Windows-specific paths (use forward slashes)
+MCP_DEMO_PATH=C:/path/to/your/demo/files
+Alternatively, set environment variables using Command Prompt:
+
+set OPENAI_API_KEY=your-openai-api-key
+set ANTHROPIC_API_KEY=your-anthropic-api-key
+Or using PowerShell:
+
+$env:OPENAI_API_KEY="your-openai-api-key"
+$env:ANTHROPIC_API_KEY="your-anthropic-api-key"
+5. Claude Desktop Configuration (Windows)
+Claude Desktop config location on Windows:
+
+%APPDATA%\Claude\claude_desktop_config.json
+Example setup:
+
+# Navigate to Claude config directory
+cd %APPDATA%\Claude
+
+# Copy and edit configuration
+copy "C:\path\to\mcp-course\notebooks\02-first-mcp-server\claude_desktop_config.json" claude_desktop_config.json
+Important: Use absolute paths with forward slashes in the config file:
+
+{
+  "mcpServers": {
+    "weather": {
+      "command": "C:/path/to/mcp-course/venv/Scripts/python.exe",
+      "args": ["C:/path/to/mcp-course/notebooks/02-first-mcp-server/weather_server.py"]
+    }
+  }
+}
+6. Windows-Specific Commands
+When running demos, use these Windows-equivalent commands:
+
+Linux/macOS	Windows (CMD)	Windows (PowerShell)
+source venv/bin/activate	venv\Scripts\activate	venv\Scripts\Activate.ps1
+export VAR=value	set VAR=value	$env:VAR="value"
+~/.config/Claude/	%APPDATA%\Claude\	$env:APPDATA\Claude\
+python3	python	python
+7. Testing on Windows
+# Activate virtual environment
+venv\Scripts\activate
+
+# Test basic server
+cd notebooks\01-introduction-to-mcp
+pip install -r requirements.txt
+python basic_server.py
+Windows Troubleshooting
+Common Windows Issues:
+
+"python not found"
+
+Reinstall Python with "Add to PATH" checked
+Or add Python manually to system PATH
+PowerShell execution policy errors
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+Permission denied with npm/node
+
+Run terminal as Administrator
+Or use npm config set prefix "C:\Users\{username}\AppData\Roaming\npm"
+Claude Desktop not finding MCP servers
+
+Use absolute paths in configuration
+Ensure all backslashes are forward slashes in JSON
+Check that Python executable path is correct: C:\path\to\venv\Scripts\python.exe
+Long path issues
+
+Enable long paths in Windows: gpedit.msc → Computer Configuration → Administrative Templates → System → Filesystem → Enable Win32 long paths
+Windows Development Tips
+Use Windows Terminal with PowerShell for better experience
+Consider WSL2 for Linux-like environment if preferred
+Use VS Code with Python extension for development
+Set up Windows Defender exclusions for your development folder to improve performance
+📚 Demo Sections Guide
+01. Introduction to MCP
+What it covers: MCP fundamentals, basic server implementation, client interaction
+
+Files:
+
+basic_server.py - Minimal MCP server
+test_client.py - Test client for interaction
+README.md - Detailed explanation
+Running:
+
+cd notebooks/01-introduction-to-mcp
+pip install -r requirements.txt
+
+# Terminal 1: Start the server
+python basic_server.py
+
+# Terminal 2: Test with client
+python test_client.py
+Key Learning: Understanding MCP architecture and basic client-server communication.
+
+02. First MCP Server
+What it covers: Building a practical MCP server with Claude Desktop integration for real-world workflows
+
