@@ -6,10 +6,12 @@ The Model Context Protocol (MCP) is revolutionizing how AI applications connect 
 
 What You'll Learn
 MCP Fundamentals: Core concepts, architecture, and capabilities
+
 MCP Capabilities: Tools, Resources, Prompts, and Sampling
 Agent Development: Building agents with Google ADK, and OpenAI SDK
 Consumer Applications: Using MCP with Claude Desktop and Cursor IDE
 Security Best Practices: Securing MCP implementations and preventing attacks
+
 🚀 Quick Start with UV
 Using UV Package Manager (Recommended)
 Most demo scripts in this course include UV inline metadata and can be run directly with UV, a fast Python package manager:
@@ -30,6 +32,7 @@ No need to manage virtual environments manually
 Dependencies are installed automatically from inline script metadata
 Faster dependency resolution and installation
 Consistent environment across all demos
+
 📁 Repository Structure
 mcp-course/
 ├── README.md                           # This file - complete course guide
@@ -60,8 +63,8 @@ Anthropic API Key (for Claude-based demos)
 Google Cloud Project (for ADK demos)
 1. Clone and Setup
 # Clone the repository
-git clone https://github.com/EnkrateiaLucca/mcp-course.git
-cd mcp-course
+git clone https://https://github.com/MangeshMPatankar/flo2025/
+cd mcp
 
 # Create a virtual environment
 python -m venv venv
@@ -200,6 +203,7 @@ Use Windows Terminal with PowerShell for better experience
 Consider WSL2 for Linux-like environment if preferred
 Use VS Code with Python extension for development
 Set up Windows Defender exclusions for your development folder to improve performance
+
 📚 Demo Sections Guide
 01. Introduction to MCP
 What it covers: MCP fundamentals, basic server implementation, client interaction
